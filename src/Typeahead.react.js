@@ -192,10 +192,13 @@ class Typeahead extends React.Component {
       name,
       placeholder,
       renderToken,
+      parser,
     } = this.props;
     const {activeIndex, activeItem, initialItem, selected, text} = this.state;
     const Input = multiple ? TokenizerInput : TypeaheadInput;
-    const inputProps = {bsSize, disabled, name, placeholder, renderToken};
+    const inputProps = {
+      bsSize, disabled, name, placeholder, renderToken, parser,
+    };
 
     return (
       <Input
@@ -559,6 +562,10 @@ Typeahead.propTypes = {
    */
   onFocus: PropTypes.func,
   /**
+   * Function to filtering input string for input elements.
+   */
+  parser: PropTypes.func,
+  /**
    * Invoked when the input value changes. Receives the string value of the
    * input.
    */
@@ -612,6 +619,7 @@ Typeahead.defaultProps = {
   multiple: false,
   onBlur: noop,
   onChange: noop,
+  parser: null,
   onFocus: noop,
   onInputChange: noop,
   onPaginate: noop,

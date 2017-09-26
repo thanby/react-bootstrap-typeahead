@@ -124,14 +124,21 @@ describe('<AsyncTypeahead>', () => {
     });
 
     // Initial search
+    // Initial search
     performSearch('search', instance, () => {
       updateProps(instance, {options: []});
       expect(searchCount).to.equal(1);
 
-      // Perform the search again.
-      performSearch('search', instance, () => {
+      // Second search
+      performSearch('newSearch', instance, () => {
+        updateProps(instance, {options: []});
         expect(searchCount).to.equal(2);
-        done();
+
+        // Perform the original search again.
+        performSearch('search', instance, () => {
+          expect(searchCount).to.equal(3);
+          done();
+        });
       });
     });
   });

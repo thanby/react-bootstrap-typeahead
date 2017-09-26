@@ -47,6 +47,7 @@ class TypeaheadInput extends React.Component {
       placeholder,
       selected,
       value,
+      parser,
     } = this.props;
 
     const inputProps = {
@@ -57,6 +58,7 @@ class TypeaheadInput extends React.Component {
       onFocus,
       placeholder,
       value,
+      parser,
     };
 
     return (
