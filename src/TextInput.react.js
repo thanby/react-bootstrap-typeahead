@@ -19,6 +19,7 @@ class TextInput extends React.Component {
     if (newText !== this.selectedText) {
       e.persist();
       this.selectedText = newText;
+      e.target.value = newText;
       this.props.onChange(e);
     } else if (e.target.value !== newText) {
       e.stopPropagation();
